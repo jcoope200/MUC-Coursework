@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MUC Coursework</string>
+    <string name="driver_prompt">Choose a driver!</string>
+
+    <string-array name="driver_arrays">
+        <item>Nico Rosberg</item>
+        <item>Lewis Hamilton</item>
+        <item>Sebastian Vettel</item>
+        <item>Daniel Ricciardo</item>
+        <item>Felipe Massa</item>
+        <item>Valtteri Bottas</item>
+        <item>Kimi Raikkonen</item>
+        <item>Fernando Alonso</item>
+        <item>Kevin Magnussen</item>
+        <item>Jenson Button</item>
+        <item>Sergio Perez</item>
+        <item>Nico Hulkenberg</item>
+        <item>Jean-Eric Vergne</item>
+        <item>Daniil Kvyat</item>
+        <item>Romain Grosjean</item>
+        <item>Pastor Maldonado</item>
+        <item>Max Chilton</item>
+        <item>Jules Bianchi</item>
+        <item>Esteban Gutierrez</item>
+        <item>Adrian Sutil</item>
+        <item>Marcus Ericsson</item>
+        <item>Kamui Kobayashi</item>
+    </string-array>
+
+</resources>

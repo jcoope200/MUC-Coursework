@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="128dp"
+        android:id="@+id/scrollView" >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/tvNewsOutput" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/tvNewsItem" />
+        </LinearLayout>
+    </ScrollView>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:id="@+id/imgDriver"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/rosberg"
+       />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:textColor="#556B2F"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/tvDriver" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:textColor="#5F9EA0"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/tvTeam" />
+
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:id="@+id/buttonBack"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Saved Data"
+        android:id="@+id/btnSavedData"
+        android:layout_gravity="center_horizontal"
+        android:onClick="onClick"/>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/scrollView2" >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:paddingLeft="2dp"
+                        android:paddingRight="2dp"
+                android:layout_gravity="center_horizontal"
+                        android:id="@+id/tvAustralia" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/tvMalaysia" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/tvBahrain" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/tvChina" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/tvSpain" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/tvMonaco" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/tvCanada" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/tvAustria" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/tvGreatBritain" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/tvGermany" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/tvHungary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/tvBelgium" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/tvItaly" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/tvSingapore" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/tvJapan" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/tvRussia" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/tvUnitedStates" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/tvBrazil" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/tvAbuDhabi" />
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>
