@@ -24,6 +24,7 @@ public class RSSParser {
 
     public void setRSSData(String ourItemData)
     {
+        //each news item's title, description and link is given to an instance of the RSSDataItem class
         RSSData.setItemTitle(ourItemData);
         RSSData.setItemDescription(ourItemData);
         RSSData.setItemLink(ourItemData);
@@ -36,12 +37,17 @@ public class RSSParser {
 
     public RSSParser()
     {
+        //each item is set to null to allow different headlines to populate a separate RSSDataItem object
         this.RSSData = new RSSDataItem();
         setRSSData(null);
     }
 
     public void parseRSSDataItem(XmlPullParser theParser, int theEventType)
     {
+        //the document holding the RSS feed is thoroughly searched
+        //if the line being searched has a starting tag, the text is stored in the RSSDataItem object
+        //nested ifs store the text in the proper places depending on what the start tag was
+        //exceptions are logged, either due to invalid tags or being unable to find the feed
 
         RSSData.setItemTitle("");
         RSSData.setItemDescription("");
@@ -88,6 +94,7 @@ public class RSSParser {
     }
 
     public void parseRSSData(String RSSItemstoParse) throws MalformedURLException{
+        //points to the feed to be parsed and sets up the parser
         URL rssURL = new URL(RSSItemstoParse);
         InputStream rssInputStream;
         try
@@ -118,6 +125,7 @@ public class RSSParser {
 
     public static String getStringFromInputStream(InputStream stream, String charsetName) throws IOException
     {
+        //used in order to read the text from the internet feed
         int n = 0;
         char[] buffer = new char[1024 * 4];
         InputStreamReader reader = new InputStreamReader(stream, charsetName);
