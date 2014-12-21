@@ -25,6 +25,7 @@ public class SavingDataOutput extends MainActivity implements View.OnClickListen
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
     public void onCreate(Bundle savedInstanceState){
+        //uses the context of the application in order to use the getDefaultSharedPreferences method
         super.onCreate(savedInstanceState);
         setContentView(R.layout.driver_prefs);
         btnBack = (Button) findViewById(R.id.btnBack);
@@ -38,6 +39,7 @@ public class SavingDataOutput extends MainActivity implements View.OnClickListen
     }
 
     private void loadSavedPreferences(){
+        //the default values are placed in the shared preferences object and put into the text views
         tvFavDriver.setText(tvFavDriver.getText() + SharedPrefs.getString("tvDriver", "Nico Rosberg"));
         tvFavTrack.setText(tvFavTrack.getText() + SharedPrefs.getString("tvFavTrack", "Australia"));
         tvFavSummary.setText(tvFavSummary.getText() + SharedPrefs.getString("tvSummary", "Rosberg"));
