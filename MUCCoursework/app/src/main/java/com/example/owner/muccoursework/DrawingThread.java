@@ -40,6 +40,8 @@ public class DrawingThread extends Thread {
     private DrawingSurfaceView drawSurface;
 
     public DrawingThread(SurfaceHolder surfaceHolder, DrawingSurfaceView bioSurfV) {
+        //associate objects of the SurfaceHolder and DrawingSurfaceView classes with the particular instance of the DrawingThread class
+        //create a paint object to draw to the canvas
         this.drawingSurface = surfaceHolder;
         this.drawSurface = bioSurfV;
         paintArea = new Paint();
@@ -48,6 +50,8 @@ public class DrawingThread extends Thread {
 
     public void doStart() {
         synchronized (drawingSurface) {
+            //initial date is set to 16th March 2014, the start of the 2014 Formula One season
+            //call method to calculate the days since that point for use in the graph
             int aDays = 16;
             int aMonth = 3;
             int aYear = 2014;
@@ -59,6 +63,9 @@ public class DrawingThread extends Thread {
     }
 
     public void run() {
+        //check that access to the canvas is granted before any attempts at drawing can be made
+        //unlock access to the canvas using a try...finally block to nullify null pointer exceptions
+        //run this thread in the background
         while (run) {
             Canvas c = null;
             try {
@@ -79,6 +86,8 @@ public class DrawingThread extends Thread {
     }
 
     public void setSurfaceSize(int width, int height) {
+        //define the dimensions of the canvas by taking in the width and height integers and setting the canvas' width and height to match
+        //then call the start method
         synchronized (drawingSurface) {
             canvasWidth = width;
             canvasHeight = height;
@@ -90,6 +99,9 @@ public class DrawingThread extends Thread {
 
 
     private void svDraw(Canvas canvas) {
+        //take in the canvas and check if the draw thread is running
+        //if it is, save to and restore the canvas so as to not lose progress on the drawing
+        //fill in the background with solid white and draw the waves in red, green and blue
         if (run) {
             canvas.save();
             canvas.restore();
@@ -106,6 +118,9 @@ public class DrawingThread extends Thread {
     }
 
     private int calcDays(int cdDaysIn, int cdMonthIn, int cdYearIn) {
+        //calculate the days since 16th March 2014
+        //keep a note of the number of days as of the end of each month to calculate the years since this date
+        //take leap years into account
         int iNoLeapYears, iNoYears, iNoYearsAsDays, iCurrentDays, iNumDays, iDaysSince;
         int aTotMonth[] = {31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365};
         iNoYears = cdYearIn - 1900;
@@ -116,6 +131,7 @@ public class DrawingThread extends Thread {
     }
 
     public void drawWave(Canvas theCanvas, int period) {
+        //draw waves according to these calculations
         float xPosOld = 0.0f;
         float yPosOld = 0.0f;
         int dStart = -15;
@@ -140,6 +156,7 @@ public class DrawingThread extends Thread {
     }
 
     public void drawAxes(Canvas theCanvas) {
+        //draw the axes in black according to the halfway points of the screen's height and width
         paintArea.setColor(Color.BLACK);
         theCanvas.drawLine(0, HalfAppletHeight, 30 * HalfAppletWidth, HalfAppletHeight, paintArea); // Horizontal X Axes
         theCanvas.drawLine(15 * HalfAppletWidth, 0, 15 * HalfAppletWidth, canvasHeight, paintArea); // Vertical Y Axes
