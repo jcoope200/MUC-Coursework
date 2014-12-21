@@ -46,6 +46,7 @@ public class SaveData extends MainActivity {
 
     public SaveData(SharedPreferences StoredPrefs)
     {
+        //set the prefs to the default and use try...catch to check the prefs aren't null
         setStoredDriver("Nico Rosberg");
         setStoredTrack("Australia");
         setStoredSummary("Rosberg");
@@ -60,24 +61,28 @@ public class SaveData extends MainActivity {
     }
 
     public void savePreferences(String key, boolean value){
+        //write a key value pair and save it as a preference
         SharedPreferences.Editor editor = SharedPrefs.edit();
         editor.putBoolean(key, value);
         editor.commit();
     }
 
     public void savePreferences(String key, String value){
+        //write a key value pair and save it as a preference
         SharedPreferences.Editor editor = SharedPrefs.edit();
         editor.putString(key, value);
         editor.commit();
     }
 
     public void savePreferences(String key, int value){
+        //write a key value pair and save it as a preference
         SharedPreferences.Editor editor = SharedPrefs.edit();
         editor.putInt(key, value);
         editor.commit();
     }
 
     public void setDefaultPrefs(){
+        //call savePreferences for each of the pairs to set the default preference
         savePreferences("tvDriver", "Nico Rosberg");
         savePreferences("tvTrack", "Australia");
         savePreferences("tvSummary", "Rosberg");
