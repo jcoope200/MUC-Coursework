@@ -44,12 +44,14 @@ public class RSSDataItem implements Serializable{
 
     public RSSDataItem()
     {
+        //construct an object based on the RSS feed's title, description and link
         this.itemTitle = "";
         this.itemDescription = "";
         this.itemLink = "";
     }
 
     public String toString(){
+        //grab the top headline from the feed and store it in a concatenated, serializable string
         String FormulaOneNewsData;
         FormulaOneNewsData = "RSSDataItem [itemTitle=" + itemTitle;
         FormulaOneNewsData += ", itemDescription=" + itemDescription;
