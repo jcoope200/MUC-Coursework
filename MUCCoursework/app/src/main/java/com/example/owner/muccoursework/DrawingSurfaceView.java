@@ -16,6 +16,8 @@ public class DrawingSurfaceView extends SurfaceView implements SurfaceHolder.Cal
 
     public DrawingSurfaceView(Context context)
     {
+        //assign proper surface holder to the instance of SurfaceHolder and link the new instance of DrawingSurfaceView
+        //pass the holder and context into a new thread and set the focus to the instance of the class
         super(context);
         CanvasSurface = getHolder();
         CanvasSurface.addCallback(this);
@@ -31,6 +33,7 @@ public class DrawingSurfaceView extends SurfaceView implements SurfaceHolder.Cal
     @Override
     public void surfaceCreated(SurfaceHolder holder)
     {
+        //set thread to running and start it
         drawingThread.setRunning(true);
         drawingThread.start();
     }
@@ -38,12 +41,14 @@ public class DrawingSurfaceView extends SurfaceView implements SurfaceHolder.Cal
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height)
     {
+        //calls setSurfaceSize method to adapt to new size if the surface size is altered
         drawingThread.setSurfaceSize(width, height);
     }
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder)
     {
+        //stops thread from running, making sure no exceptions are created
         boolean retry = true;
         drawingThread.setRunning(false);
         while(retry)
