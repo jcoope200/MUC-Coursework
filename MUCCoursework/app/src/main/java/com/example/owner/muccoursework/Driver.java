@@ -42,6 +42,7 @@ public class Driver {
     }
 
     public void setDriverNames() {
+        //assign each driver their own ID number corresponding with the order they are made available on the spinner
         driverNames = new String[22];
         driverNames[0] = "Nico Rosberg";
         driverNames[1] = "Lewis Hamilton";
@@ -72,6 +73,7 @@ public class Driver {
     }
 
     public void setDriverBriefs() {
+        //hold a sentence based on the driver's car number
         driverBriefs = new String[22];
         driverBriefs[1] = "Nico Rosberg's driver number is 6.";
         driverBriefs[2] = "Lewis Hamilton's driver number is 44.";
@@ -113,6 +115,7 @@ public class Driver {
 
     public Driver(int driverNum)
     {
+        //display a sentence based on the driver and sentence
         setDriverNames();
         setDriverBriefs();
         setDriverNumber(driverNum);
