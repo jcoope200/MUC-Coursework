@@ -221,6 +221,8 @@ public class DatabaseInfo implements Serializable{
 
     @Override
     public String toString(){
+        //combine database's field names with the data they relate to for each driver
+        //return this long concatenated string as a serialized string
         String driverData;
         driverData = "DatabaseInfo [DriverID=" + driverID;
         driverData = ", DriverName=" + driverName;
