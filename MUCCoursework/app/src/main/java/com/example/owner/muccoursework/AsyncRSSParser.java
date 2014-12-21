@@ -25,12 +25,15 @@ public class AsyncRSSParser extends AsyncTask<String, Integer, RSSDataItem>
     @Override
     protected void onPreExecute()
     {
+        //display toast message to indicate the beginning of parsing
         Toast.makeText(appContext, "Parsing started!", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected RSSDataItem doInBackground(String...params)
     {
+        //create instances of the two parsing classes, RSSDataItem and RSSParser
+        //parse the RSS feed's data and return it to the calling activity
         RSSDataItem parsedData;
         RSSParser rssParser = new RSSParser();
         try{
@@ -44,6 +47,7 @@ public class AsyncRSSParser extends AsyncTask<String, Integer, RSSDataItem>
 
     @Override
     protected void onPostExecute(RSSDataItem result){
+        //display toast message on the screen to indicate end of parsing sequence
         Toast.makeText(appContext,"Parsing finished!", Toast.LENGTH_SHORT).show();
     }
 }
