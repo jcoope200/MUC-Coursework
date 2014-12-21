@@ -50,6 +50,8 @@ public class DriverPage extends MainActivity implements View.OnClickListener{
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
     public void onCreate(Bundle savedInstanceState){
+        //set content view to the driver_page output screen
+        //define variables to represent each of the various XML elements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.driver_page);
         backButton = (Button) findViewById(R.id.buttonBack);
@@ -82,10 +84,13 @@ public class DriverPage extends MainActivity implements View.OnClickListener{
         driverImg = (ImageView)findViewById(R.id.imgDriver);
 
 
+        //create an intent object to correlate the output with the driver selected in the main activity
         Intent iMainAct = getIntent();
 
+        //create instance of the DatabaseInfo object using the serializable data from the database
         DatabaseInfo mydatabaseInfo = (DatabaseInfo) iMainAct.getSerializableExtra("Formula1");
 
+        //populate the text views and the image view with the chosen driver's information
         tvDriver.setText(mydatabaseInfo.getDriverName());
         tvTeam.setText(mydatabaseInfo.getDriverTeam());
         tvAustralia.setText("Australian Grand Prix: " + mydatabaseInfo.getAustraliaResult());
@@ -111,11 +116,16 @@ public class DriverPage extends MainActivity implements View.OnClickListener{
         //tvNewsOutput.setText(iMainAct.getStringExtra("RSSNewsOutput"));
 
 
+        //set the image path to get the right image depending on the resource ID
         String imagePath = "drawable" + mydatabaseInfo.getDriverImage();
         Context appContext = getApplicationContext();
         int imgResID = appContext.getResources().getIdentifier(imagePath, "drawable", getPackageName());
         driverImg.setImageResource(imgResID);
 
+        //create an instance of the RSSDataItem class with the URL being set to the RSS feed's URL
+        //create an instance of AsyncRSSParser using this app context and the URL
+        //handle any exceptions such as the parser being interrupted or unable to find the feed
+        //display the RSS entry's description to the textView
         RSSDataItem newsEntries = new RSSDataItem();
         String RSSFeedURL = "http://www.autosport.com/rss/f1news.xml";
         AsyncRSSParser rssAsyncParse = new AsyncRSSParser(this,RSSFeedURL);
@@ -133,6 +143,7 @@ public class DriverPage extends MainActivity implements View.OnClickListener{
 
     public void onClick(View view)
     {
+        //all code has been completed if the back button has been hit, so end the intent and return to main activity
         setResult(Activity.RESULT_OK);
         finish();
     }
