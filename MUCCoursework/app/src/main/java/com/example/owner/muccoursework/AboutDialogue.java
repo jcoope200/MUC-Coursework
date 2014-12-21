@@ -13,6 +13,9 @@ public class AboutDialogue extends DialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState){
+        //AlertDialog builder is used to create a dialogue box for the activity
+        //setMessage makes the message box contain a meaningful output, with an OK button to close the box
+        //the title and icon of the menu item are also both set
         AlertDialog.Builder AboutDialog = new AlertDialog.Builder(getActivity());
         AboutDialog.setMessage("This app allows you to browse Formula One drivers from the 2014 season and view their results at each race! News from Autosport's F1 RSS feed will also be displayed").setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
