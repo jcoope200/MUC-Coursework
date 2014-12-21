@@ -20,6 +20,9 @@ import java.util.Locale;
  */
 public class FormulaOneDatabaseManager extends SQLiteOpenHelper {
 
+    //define database version, path, name, and fields
+    //these must match the names in the database file itself
+    //store application context in a context variable as well
     private static final int DB_VER = 1;
     private static final String DB_PATH = "/data/data/com.example.owner.muccoursework/databases/";
     private static final String DB_NAME = "formula1.s3db";
@@ -52,12 +55,15 @@ public class FormulaOneDatabaseManager extends SQLiteOpenHelper {
     private final Context appContext;
 
     public FormulaOneDatabaseManager(Context context, String name, SQLiteDatabase.CursorFactory factory, int version){
+        //call constructor for superclass and assign the context variable
         super(context, name, factory, version);
         this.appContext = context;
     }
 
     @Override
     public void onCreate(SQLiteDatabase db){
+        //create SQL query string based on the database's fields and types of those fields
+        //execute the query to ensure that the correct database can be found
         String CREATE_DATABASEINFO_TABLE = "CREATE TABLE IF NOT EXISTS " +
                 TBL_DATABASEINFO + "(" + COL_DRIVERID + " INTEGER PRIMARY KEY," + COL_DRIVERNAME
                 + " TEXT," + COL_DRIVERTEAM + " TEXT," + COL_DRIVERIMAGE + " TEXT,"
@@ -73,6 +79,7 @@ public class FormulaOneDatabaseManager extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
+        //if the database has been changed after making the initial call, upgrade it
         if (newVersion > oldVersion)
         {
             db.execSQL("DROP TABLE IF EXISTS " + TBL_DATABASEINFO);
@@ -81,6 +88,9 @@ public class FormulaOneDatabaseManager extends SQLiteOpenHelper {
     }
 
     public void dbCreate() throws IOException{
+        //on creation of the database, attempt to copy it from the assets folder to the app's proper location
+        //create an empty database if the database cannot be found
+        //copy the database's information from assets
         boolean dbExist = dbCheck();
 
         if(!dbExist){
@@ -94,6 +104,8 @@ public class FormulaOneDatabaseManager extends SQLiteOpenHelper {
     }
 
     private boolean dbCheck(){
+        //attempt to open the database to ensure it exists
+        //if a database is found and opened, close it to allow for further processing
         SQLiteDatabase db = null;
 
         try{
@@ -111,6 +123,8 @@ public class FormulaOneDatabaseManager extends SQLiteOpenHelper {
     }
 
     private void copyDBFromAssets() throws IOException{
+        //provide newly created empty database with the database from the assets folder
+        //stream the data as a byte array across input and output streams
 
         InputStream dbInput = null;
         OutputStream dbOutput = null;
@@ -135,6 +149,7 @@ public class FormulaOneDatabaseManager extends SQLiteOpenHelper {
     }
 
     public void addDatabaseInfo (DatabaseInfo theDatabaseInfo){
+        //populate a new database entry with the relevant data from each of the fields
 
         ContentValues values = new ContentValues();
         values.put(COL_DRIVERID, theDatabaseInfo.getDriverID());
@@ -167,6 +182,10 @@ public class FormulaOneDatabaseManager extends SQLiteOpenHelper {
     }
 
     public DatabaseInfo findDriverData (String thisDriverData) {
+        //find the user's particular driver data
+        //create a query string based on the driver's name
+        //open the database and carry out the query using a cursor to move through the database's records to find the matching information
+        //store the data in an object of type DatabaseInfo and return it to the main activity
         String query = "Select * FROM " + TBL_DATABASEINFO + " WHERE " + COL_DRIVERNAME + " = \"" + thisDriverData + "\"";
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -210,6 +229,7 @@ public class FormulaOneDatabaseManager extends SQLiteOpenHelper {
     }
 
     public boolean removeDriverData(String thisDriverData){
+        //similar to above, but used to delete a driver
 
         boolean result = false;
 
