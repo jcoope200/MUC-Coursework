@@ -62,6 +62,7 @@ public class MapData implements Serializable{
 
     @Override
     public String toString(){
+        //combine the circuit database's field names with the data they relate to in one long concatenated serializable string
         String mapData;
         mapData = "MapData [entryID=" + entryID;
         mapData = ", CountryName=" + countryName;
