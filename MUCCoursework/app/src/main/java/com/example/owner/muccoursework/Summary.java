@@ -10,6 +10,7 @@ public class Summary {
 
     public void setChosenDriver(int chosenDriver)
     {
+        //use the chosen driver's ID to determine which driver has been selected and therefore which database entry to access later
         this.chosenDriver = chosenDriver;
 
     }
@@ -41,6 +42,7 @@ public class Summary {
 
     public void determineDriverSummary(int thatDriver, int thatSummary)
     {
+        //make sure the numbers of the ID and case statement from the MainActivity call to this class return the proper driver
         switch(thatSummary){
             case 1:
                 if (thatDriver == 0){
