@@ -21,6 +21,8 @@ import java.util.List;
 import java.util.Locale;
 
 public class MapDatabaseManager extends SQLiteOpenHelper{
+    //define the database's version, path, name and each of the fields, making sure they match those in the circuit database file
+    //store the app's context in a context variable
     private static final int DB_VER = 1;
     private static final String DB_PATH = "/data/data/com.example.owner.muccoursework/databases";
     private static final String DB_NAME = "circuitsMap.s3db";
@@ -35,12 +37,15 @@ public class MapDatabaseManager extends SQLiteOpenHelper{
     private final Context appContext;
 
     public MapDatabaseManager(Context context, String name, SQLiteDatabase.CursorFactory factory, int version){
+        //call the constructor for the superclass and assign the context variable the application's context
         super(context, name, factory, version);
         this.appContext = context;
     }
 
     @Override
     public void onCreate(SQLiteDatabase db){
+        //create an SQL query string based on the database's fields and types
+        //execute the query to ensure that the correct database can be found
         String CREATE_CIRCUITSINFO_TABLE = "CREATE TABLE IF NOT EXISTS " + TBL_CIRCUITSINFO + "("
                 + COL_ENTRYID + " INTEGER PRIMARY KEY," + COL_COUNTRYNAME
                 + " TEXT," + COL_CIRCUITNAME + " TEXT," + COL_LATITUDE
@@ -50,6 +55,7 @@ public class MapDatabaseManager extends SQLiteOpenHelper{
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
+        //upgrade the database if it has been changed since making the initial call
         if (newVersion > oldVersion)
         {
             db.execSQL("DROP TABLE IF EXISTS " + TBL_CIRCUITSINFO);
@@ -58,6 +64,9 @@ public class MapDatabaseManager extends SQLiteOpenHelper{
     }
 
     public void dbCreate() throws IOException {
+        //copy the database from the assets folder to the proper location
+        //create an empty database in the path if the database is not found
+        //the copyDBFromAssets method is called to copy the database information
         boolean dbExist = dbCheck();
         if (!dbExist){
             this.getReadableDatabase();
@@ -70,6 +79,8 @@ public class MapDatabaseManager extends SQLiteOpenHelper{
     }
 
     private boolean dbCheck(){
+        //ensure the database exists by trying to open it
+        //if a database is opened, close it to allow for further processing
         SQLiteDatabase db = null;
         try{
             String dbPath = DB_PATH + DB_NAME;
@@ -86,6 +97,8 @@ public class MapDatabaseManager extends SQLiteOpenHelper{
     }
 
     private void copyDBFromAssets() throws IOException{
+        //provide the newly created empty database with the database from the assets folder in order to handle data
+        //to do this, stream the data across input and output streams as a byte array
         InputStream dbInput = null;
         OutputStream dbOutput = null;
         String dbFileName = DB_PATH + DB_NAME;
@@ -107,6 +120,7 @@ public class MapDatabaseManager extends SQLiteOpenHelper{
     }
 
     public void addaCircuitEntry(MapData aCircuit){
+        //populate a new database entry with the relevant data from each of the fields
         ContentValues values = new ContentValues();
         values.put(COL_COUNTRYNAME, aCircuit.getCountryName());
         values.put(COL_CIRCUITNAME, aCircuit.getCircuitName());
@@ -120,6 +134,10 @@ public class MapDatabaseManager extends SQLiteOpenHelper{
     }
 
     public MapData getCircuitEntry(String aCircuitEntry){
+        //find each circuit's specific data
+        //create a query string based on the string of the circuit's country
+        //open the database and carry out the query, using a cursor to move through the records to find the matching circuit
+        //store the data in an object of type MapData
         String query = "Select * FROM " + TBL_CIRCUITSINFO + " WHERE " + COL_COUNTRYNAME + " =\"" + aCircuitEntry + "\"";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(query, null);
@@ -141,6 +159,7 @@ public class MapDatabaseManager extends SQLiteOpenHelper{
     }
 
     public boolean removeCircuitEntry(String aCircuitEntry){
+        //use the same methodology if we were ever to remove a circuit from the database
         boolean result = false;
         String query = "Select * FROM " + TBL_CIRCUITSINFO + " WHERE " + COL_COUNTRYNAME + " =\"" + aCircuitEntry + "\"";
         SQLiteDatabase db = this.getWritableDatabase();
@@ -160,6 +179,8 @@ public class MapDatabaseManager extends SQLiteOpenHelper{
 
     public List<MapData> allMapData()
     {
+        //move the cursor through each MapData item in the list to populate the database in the same way
+        //this is included as the map markers aren't dependent on user input, and all show up on the map
         String query = "Select * FROM " + TBL_CIRCUITSINFO;
         List<MapData> mapDataList = new ArrayList<MapData>();
 
