@@ -22,6 +22,7 @@ import java.util.List;
  * Created by owner on 19/12/2014.
  */
 public class MapActivity extends FragmentActivity {
+
     List<MapData> mapDataList;
     private Marker[] mapDataMarkerList = new Marker[19];
     private GoogleMap mapCircuits;
@@ -32,6 +33,9 @@ public class MapActivity extends FragmentActivity {
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
     protected void onCreate(Bundle savedInstanceState){
+        //constrain application to portrait orientation and create an instance of the MapDatabaseManager based on the database for the circuit maps
+        //handle exceptions in try...catch and call allMapData method in order to return records of circuits to the list
+        //call methods to set the map up and place the markers
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.map_view);
@@ -53,6 +57,9 @@ public class MapActivity extends FragmentActivity {
 
     public void SetUpMap()
     {
+        //get the map for the activity's map fragment
+        //set the camera to the latitude and longitude of Glasgow Caledonian University
+        //activate UI elements for the GPS, compass and location buttons
         mapCircuits = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
         if(mapCircuits != null){
             mapCircuits.moveCamera(CameraUpdateFactory.newLatLngZoom(latlangCircuits, 12));
@@ -65,6 +72,8 @@ public class MapActivity extends FragmentActivity {
 
     public void AddMarkers()
     {
+        //create text to label each marker based on the circuit database
+        //do in for loop until every marker has been labelled
         MarkerOptions marker;
         MapData mapData;
         String mrkTitle;
@@ -82,6 +91,7 @@ public class MapActivity extends FragmentActivity {
 
     public MarkerOptions SetMarker(String title, String snippet, LatLng position, float markerColour, boolean centreAnchor)
     {
+        //set the markers, with the colours cycling through an array
         float anchorX;
         float anchorY;
 
