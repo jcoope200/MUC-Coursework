@@ -12,6 +12,7 @@ import android.widget.Toast;
 public class CustomOnItemSelectedListener implements OnItemSelectedListener {
 
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id){
+        //test the toast functionality by displaying the value in the driver spinner as the app starts
         Toast.makeText(parent.getContext(), "Driver: " + parent.getItemAtPosition(pos).toString(),
         Toast.LENGTH_SHORT).show();
     }
